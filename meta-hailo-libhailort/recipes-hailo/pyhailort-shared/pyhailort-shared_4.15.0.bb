@@ -21,3 +21,4 @@ LIB_SRC_DIR = "${TMPDIR}/staging/lib/"
 EXTRA_OECMAKE:append = "-DHAILO_BUILD_PYBIND=1 \
                         -DPYBIND11_PYTHON_VERSION=${PYTHON_BASEVERSION}"
 OECMAKE_TARGET_COMPILE = "_pyhailort"
+do_configure[network] =  "1"

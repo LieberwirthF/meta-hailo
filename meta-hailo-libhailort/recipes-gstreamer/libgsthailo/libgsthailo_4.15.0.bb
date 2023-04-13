@@ -21,6 +21,7 @@ RDEPENDS:${PN} += "libhailort"
 
 EXTRA_OECMAKE:append = " -DHAILO_BUILD_GSTREAMER=1"
 OECMAKE_TARGET_COMPILE = "gsthailo"
+do_configure[network] =  "1"
 
 GST_HAILO_SOURCES_DIR = "${S}/hailort/libhailort/bindings/gstreamer/gst-hailo"
 GST_HAILO_INCLUDE_STAGING_DIR = "${D}${includedir}/gst-hailo"

@@ -35,3 +35,4 @@ do_configure:prepend() {
     cp ${PYHAILORT_SHARED_PATH}/${PYHAILORT_SHARED_FILE} ${S}/hailo_platform/pyhailort
     echo '{"py_version": "${PY_VER}", "arch": "${TARGET_ARCH}", "hrt_version": "${PV}"}' > ${S}/wheel_conf.json
 }
+do_configure[network] =  "1"

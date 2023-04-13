@@ -3,7 +3,7 @@ DESCRIPTION = "TAPPAS ARM applications recipe, \
                the apps hefs and media urls are taken from files/download_reqs.txt"
 
 PV_PARSED = "${@ '${PV}'.replace('.0', '')}"
-SRC_URI = "git://git@github.com/hailo-ai/tappas.git;protocol=https;branch=master"
+SRC_URI = "git@github.com:LieberwirthF/tappas.git;protocol=https;branch=master"
 
 S = "${WORKDIR}/git/core/hailo"
 

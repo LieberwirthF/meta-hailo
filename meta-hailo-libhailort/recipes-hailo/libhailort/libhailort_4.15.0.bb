@@ -25,3 +25,4 @@ do_install:append() {
 
 FILES:${PN} += "${libdir}/libhailort.so.${PV}"
 FILES:${PN}-dev += "${includedir}/hailort ${includedir}/hailort/* ${libdir}/libhailort.so"
+do_configure[network] =  "1"

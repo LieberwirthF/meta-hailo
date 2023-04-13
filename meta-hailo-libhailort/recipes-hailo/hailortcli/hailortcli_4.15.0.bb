@@ -22,3 +22,4 @@ do_install:append() {
 }
 
 FILES:${PN} += "${bindir}/hailortcli"
+do_configure[network] =  "1"
