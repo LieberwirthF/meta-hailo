@@ -7,7 +7,7 @@ SRC_URI = "git://git@github.com/LieberwirthF/tappas.git;protocol=https;branch=ma
 
 S = "${WORKDIR}/git/core/hailo"
 
-SRCREV = "356ce84dae1c72313a4aad72c999dcbdf4af29c0"
+SRCREV = "3740f5943bf90f932ed8e518be7b428a2305257f"
 LICENSE = "LGPLv2.1"
 LIC_FILES_CHKSUM += "file://../../LICENSE;md5=4fbd65380cdd255951079008b364516c"
 
