@@ -7,7 +7,7 @@ SRC_URI = "git://git@github.com/LieberwirthF/tappas.git;protocol=https;branch=ma
 
 S = "${WORKDIR}/git/core/hailo"
 
-SRCREV = "50c10d5b1dc31d1354736e72b1d2dffacd937e48"
+SRCREV = "0ff139d848b960903240311f19907903aec34d1e"
 LICENSE = "LGPLv2.1"
 LIC_FILES_CHKSUM += "file://../../LICENSE;md5=4fbd65380cdd255951079008b364516c"
 
@@ -43,7 +43,7 @@ python () {
     else:
         d.setVar('REQS_FILE', d.getVar('REQS_HAILO15_FILE'))
         d.setVar('ARM_APPS_DIR', d.getVar('HAILO15_DIR'))
-        d.appendVar('DEPENDS', " libgstmedialib xtensor")
+        d.appendVar('DEPENDS', " libmedialib-api xtensor")
 }
 
 IS_H15 = "${@ 'true' if 'hailo15' in d.getVar('MACHINE') else 'false'}"
@@ -77,7 +77,11 @@ fakeroot install_app_dir() {
     # copy the required file into the app path under resources directory
     install -m 0755 ${WORKDIR}/${CURRENT_REQ_FILE} ${ROOTFS_APPS_DIR}/${CURRENT_APP_NAME}/resources
     # copy the app shell script into the app path
-    install -m 0755 ${ARM_APPS_DIR}/${CURRENT_APP_NAME}/*.sh ${ROOTFS_APPS_DIR}/${CURRENT_APP_NAME}
+    if ls ${ARM_APPS_DIR}/${CURRENT_APP_NAME}/*.sh >/dev/null 2>&1; then
+    	install -m 0755 ${ARM_APPS_DIR}/${CURRENT_APP_NAME}/*.sh ${ROOTFS_APPS_DIR}/${CURRENT_APP_NAME}
+    else
+        bbnote ".sh file not found, skipping install"
+    fi
     if [ -d "${ARM_APPS_DIR}/${CURRENT_APP_NAME}/configs" ]; then
         install -d ${ROOTFS_APPS_DIR}/${CURRENT_APP_NAME}/resources/configs
         install -m 0755 ${ARM_APPS_DIR}/${CURRENT_APP_NAME}/configs/* ${ROOTFS_APPS_DIR}/${CURRENT_APP_NAME}/resources/configs
